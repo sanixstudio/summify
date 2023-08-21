@@ -9,7 +9,7 @@ async function connectToDatabase() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(colors.bgYellow.black("Connected to MongoDB"));
+    console.log(colors.bgGreen.brightBlue("Connected to MongoDB"));
   } catch (error) {
     console.error(
       colors.bgBlack.brightRed("Error connecting to MongoDB:", error.message)
