@@ -9,6 +9,11 @@ router.post('/', authMiddleware, async (req, res) => {
   try {
     const { originalText, summary } = req.body;
 
+    // Check if summary is provided
+    if (!summary) {
+      return res.status(400).json({ message: 'Summary is required.' });
+    }
+
     const summaryEntry = new Summary({
       userId: req.user._id,
       originalText,

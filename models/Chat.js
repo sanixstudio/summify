@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 
 const chatSchema = new mongoose.Schema({
-  userId: mongoose.Schema.Types.ObjectId,
-  message: { type: String },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: [true, "UserId is missing"],
+  },
+  message: { type: String, required: [true, "Chat is missing"] },
   timestamp: { type: Date, default: Date.now },
 });
 
