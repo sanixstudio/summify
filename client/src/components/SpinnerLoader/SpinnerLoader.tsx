@@ -5,13 +5,13 @@ export default function Loader() {
     <Oval
       height={80}
       width={80}
-      color="#4fa94d"
+      color="#fff"
       wrapperStyle={{}}
       wrapperClass=""
       visible={true}
       ariaLabel="oval-loading"
-      secondaryColor="#4fa94d"
-      strokeWidth={2}
+      secondaryColor="#fff"
+      strokeWidth={4}
       strokeWidthSecondary={2}
     />
   );

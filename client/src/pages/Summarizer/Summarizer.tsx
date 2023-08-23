@@ -1,9 +1,9 @@
 import { FormEvent, useState } from "react";
-import { Comment } from "react-loader-spinner";
 import { motion } from "framer-motion";
 import Root from "../../Layout/Layout";
 import { Helmet } from "react-helmet";
 import { formatText } from "../../utils/formattedText";
+import { SpinnerLoader } from "../../components";
 
 function Summarizer() {
   const [query, setQuery] = useState("");
@@ -16,7 +16,7 @@ function Summarizer() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (query === "") {
-      setError("Enter text to summarize");
+      setError("No query specified");
       return;
     }
     setLoading(true);
@@ -87,21 +87,10 @@ function Summarizer() {
             </button>
           </motion.form>
 
-          {loading && (
-            <div>
-              <Comment
-                visible={true}
-                height={80}
-                width={80}
-                ariaLabel="comment-loading"
-                color="#fff"
-                backgroundColor="#BA37B2"
-              />
-            </div>
-          )}
+          {loading && <SpinnerLoader />}
           {(error as string) && (
-            <div className="bg-white/30 p-2 text-red-700 text-2xl">
-              Error: {error as string}
+            <div className="bg-white/50 p-2 px-4 rounded-md text-red-700 text-2xl">
+              {error as string}
             </div>
           )}
           {!loading && !error && response && (

@@ -12,6 +12,9 @@ const host = "chatgpt-ai-chat-bot.p.rapidapi.com";
 
 function App() {
   const [query, setQuery] = useState("");
+  const user = "Adi";
+
+  console.log(user);
 
   const { response, error, loading, handleSubmit } = useFetchAiData(
     query,
@@ -50,9 +53,10 @@ function App() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Ask a question..."
-              className="p-4 w-full max-w-[300px]  md:max-w-[500px] text-black"
+              className="p-4 w-full max-w-[300px]  md:max-w-[500px] text-black disabled:bg-slate-400 disabled:text-gray-600"
             />
             <button
+              disabled={loading}
               type="submit"
               className="p-5 border-2 rounded-md bg-gradient-to-r from-purple-700 to-pink-500 hover:shadow-2xl hover:opacity-90"
             >
@@ -74,7 +78,7 @@ function App() {
             </div>
           )}
           {(error as string) && (
-            <div className="text-red-700 font-bold text-2xl">
+            <div className="bg-white/50 p-2 px-4 rounded-md text-red-700 text-2xl">
               {error as string}
             </div>
           )}
@@ -82,6 +86,11 @@ function App() {
             <div className="border w-full md:max-w-[500px] p-4 rounded-2xl bg-purple-800 text-lg leading-8">
               {formatText(response)}
             </div>
+          )}
+          {response && (
+            <button className="mt-5 bg-white/70 p-2 px-4 rounded-md text-gray-500">
+              Save Chat
+            </button>
           )}
         </div>
       </Root>

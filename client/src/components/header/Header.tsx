@@ -10,14 +10,16 @@ const Header = () => {
           Summify
         </Link>
       </h1>
-      <ul className="flex gap-8">
-        <li>
-          <Link to="#">Saved Chats</Link>
-        </li>
-        <li>
-          <Link to="#">Saved Summaries</Link>
-        </li>
-      </ul>
+      {user && (
+        <ul className="flex gap-8">
+          <li>
+            <Link to="#">Saved Chats</Link>
+          </li>
+          <li>
+            <Link to="#">Saved Summaries</Link>
+          </li>
+        </ul>
+      )}
       <div>
         {user ? (
           <Link

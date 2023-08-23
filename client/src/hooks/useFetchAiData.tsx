@@ -13,7 +13,7 @@ const useFetchAiData = (
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (query === "") {
-      setError("Enter text to summarize");
+      setError("No query is specified");
       return;
     }
     setLoading(true);
