@@ -1,3 +1,4 @@
-export { default as Home } from "./Home";
-export { default as AiChatBot } from "./AiChatBot";
-export { default as Summarizer } from "./Summarizer";
+export { default as Home } from "./Home/Home";
+export { default as AiChatBot } from "./AiChatBot/AiChatBot";
+export { default as Login } from "./Login/Login";
+export { default as Summarizer } from "./Summarizer/Summarizer";

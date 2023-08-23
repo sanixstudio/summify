@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./Root.tsx";
+import Root from "./App.tsx";
 import { SpinnerLoader } from "./components/index.tsx";
-import Home from "./pages/Home.tsx";
-import { AiChatBot, Summarizer } from "./pages/index.ts";
+import Home from "./pages/Home/Home.tsx";
+import { AiChatBot, Login, Summarizer } from "./pages/index.ts";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <h1>Login</h1>,
+    element: <Login />,
   },
   {
     path: "/chatbot",
