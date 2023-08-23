@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./App.tsx";
 import { SpinnerLoader } from "./components/index.tsx";
 import Home from "./pages/Home/Home.tsx";
-import { AiChatBot, Login, Summarizer } from "./pages/index.ts";
+import { AiChatBot, Login, Register, Summarizer } from "./pages/index.ts";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     path: "/chatbot",
