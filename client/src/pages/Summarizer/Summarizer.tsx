@@ -3,11 +3,12 @@ import { Comment } from "react-loader-spinner";
 import { motion } from "framer-motion";
 import Root from "../../Layout/Layout";
 import { Helmet } from "react-helmet";
+import { formatText } from "../../utils/formattedText";
 
 function Summarizer() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState("");
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useState<null | string | unknown>(null);
   const [loading, setLoading] = useState(false);
 
   const apiKey = import.meta.env.VITE_RAPID_API_KEY;
@@ -51,7 +52,7 @@ function Summarizer() {
         <title>AI Text Summarizer</title>
       </Helmet>
       <Root>
-        <div className="bg-gradient-to-r p-2 text-white from-indigo-500 to-purple-500 h-screen w-full flex flex-col items-center">
+        <div className="bg-gradient-to-r p-2 text-white from-indigo-500 to-purple-500 min-h-[calc(100vh-60px)] w-full flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -98,14 +99,14 @@ function Summarizer() {
               />
             </div>
           )}
-          {error && (
+          {(error as string) && (
             <div className="bg-white/30 p-2 text-red-700 text-2xl">
-              Error: {error}
+              Error: {error as string}
             </div>
           )}
           {!loading && !error && response && (
             <div className="border w-full md:max-w-[500px] p-4 rounded-2xl bg-purple-800 text-lg leading-8">
-              {response}
+              {formatText(response)}
             </div>
           )}
         </div>

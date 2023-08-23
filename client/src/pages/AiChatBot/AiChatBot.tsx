@@ -1,52 +1,24 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { Comment } from "react-loader-spinner";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import Root from "../../Layout/Layout";
+import useFetchAiData from "../../hooks/useFetchAiData";
+import { formatText } from "../../utils/formattedText";
 
 const apiKey = import.meta.env.VITE_RAPID_API_KEY;
+const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
+const host = "chatgpt-ai-chat-bot.p.rapidapi.com";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState<null | string | unknown>(null);
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-
-    if (query === "") {
-      setError("Please enter a query");
-      return;
-    }
-
-    setError(null);
-    setLoading(true);
-    setResponse(null);
-
-    const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
-    const options = {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": apiKey,
-        "X-RapidAPI-Host": "chatgpt-ai-chat-bot.p.rapidapi.com",
-      },
-      body: JSON.stringify({
-        query: query,
-      }),
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      setResponse(result.response);
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-      setLoading(false);
-    }
-  };
+  const { response, error, loading, handleSubmit } = useFetchAiData(
+    query,
+    host,
+    url,
+    apiKey
+  );
 
   return (
     <>
@@ -54,7 +26,7 @@ function App() {
         <title>AI Chat-Bot</title>
       </Helmet>
       <Root>
-        <div className="bg-gradient-to-r p-2 text-white from-indigo-500 to-purple-500 h-screen w-full flex flex-col items-center">
+        <div className="bg-gradient-to-r p-2 text-white from-indigo-500 to-purple-500 min-h-[calc(100vh-60px)] w-full flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -101,12 +73,14 @@ function App() {
               />
             </div>
           )}
-          {error ? (
-            <div className="text-red-700 font-bold text-2xl">{error}</div>
-          ) : null}
+          {(error as string) && (
+            <div className="text-red-700 font-bold text-2xl">
+              {error as string}
+            </div>
+          )}
           {response && (
             <div className="border w-full md:max-w-[500px] p-4 rounded-2xl bg-purple-800 text-lg leading-8">
-              {JSON.stringify(response)}
+              {formatText(response)}
             </div>
           )}
         </div>
