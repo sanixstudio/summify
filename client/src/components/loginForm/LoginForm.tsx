@@ -1,6 +1,13 @@
+import { motion } from "framer-motion";
+
 const LoginForm = () => {
   return (
-    <div className="bg-white/30 p-8 rounded-lg shadow-md w-96 text-white">
+    <motion.div
+      initial={{ opacity: 0, x: '100%' }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white/30 p-8 rounded-lg shadow-md w-96 text-white"
+    >
       <h2 className="text-2xl font-semibold mb-4">Login</h2>
       <form>
         <div className="mb-4">
@@ -38,7 +45,7 @@ const LoginForm = () => {
           Register
         </a>
       </p>
-    </div>
+    </motion.div>
   );
 };
 

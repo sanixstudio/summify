@@ -3,7 +3,7 @@ import { LoginForm, Visitor } from "./components";
 
 function App() {
   return (
-    <div className="flex flex-col lg:flex-row w-full h-screen gap-2">
+    <div className="flex flex-col lg:flex-row w-full h-screen gap-2 overflow-hidden text-xl">
       <Visitor />
       <span className="hidden text-3xl absolute lg:block top-1/2 left-1/2 -ml-10 -mt-10 rounded-full bg-white p-2.5 py-3 shadow-lg">
         OR
