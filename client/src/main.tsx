@@ -5,6 +5,7 @@ import Root from "./App.tsx";
 import { SpinnerLoader } from "./components/index.tsx";
 import Home from "./pages/Home/Home.tsx";
 import { AiChatBot, Login, Register, Summarizer } from "./pages/index.ts";
+import { AuthProvider } from "./context/AuthContext.js";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} fallbackElement={<SpinnerLoader />} />
+    <AuthProvider>
+      <RouterProvider router={router} fallbackElement={<SpinnerLoader />} />
+    </AuthProvider>
   </React.StrictMode>
 );
