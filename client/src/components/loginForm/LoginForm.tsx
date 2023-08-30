@@ -23,7 +23,7 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/auth/login",
+        "https://ai-chat-bot-summarizer.onrender.com/api/auth/login",
         { email, password },
         { withCredentials: true }
       );

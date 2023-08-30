@@ -27,7 +27,7 @@ const RegisterForm: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/auth/register",
+        "https://ai-chat-bot-summarizer.onrender.com/api/auth/register",
         {
           username,
           email,
