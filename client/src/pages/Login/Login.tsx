@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import Root from "../../Layout/Layout";
 import { LoginForm } from "../../components";
 
-const Login = () => {
+const Login:React.FC = () => {
   return (
     <>
       <Helmet>

@@ -4,11 +4,13 @@ import React, {
   ReactNode,
   useEffect,
   useContext,
+  Dispatch,
+  SetStateAction,
 } from "react";
 
 interface AuthContextProps {
   token: string | null;
-  setToken: React.Dispatch<React.SetStateAction<string | null>>;
+  setToken: Dispatch<SetStateAction<string | null>>;
 }
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
@@ -34,6 +36,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = (): AuthContextProps => {
   const context = useContext(AuthContext);
   if (!context) {

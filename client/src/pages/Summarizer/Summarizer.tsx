@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { formatText } from "../../utils/formattedText";
 import { SpinnerLoader } from "../../components";
 
-function Summarizer() {
+const Summarizer:React.FC = () => {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState("");
   const [error, setError] = useState<null | string | unknown>(null);

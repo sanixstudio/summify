@@ -10,11 +10,9 @@ const apiKey = import.meta.env.VITE_RAPID_API_KEY;
 const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
 const host = "chatgpt-ai-chat-bot.p.rapidapi.com";
 
-function App() {
+const AiChatBot: React.FC = () => {
   const [query, setQuery] = useState("");
-  const user = "Adi";
-
-  console.log(user);
+  // const user = "Adi";
 
   const { response, error, loading, handleSubmit } = useFetchAiData(
     query,
@@ -98,4 +96,4 @@ function App() {
   );
 }
 
-export default App;
+export default AiChatBot;

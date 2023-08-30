@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Button } from "@radix-ui/themes";
 import { useEffect } from "react";
 
-const Header = () => {
+const Header: React.FC = () => {
   const { token, setToken } = useAuth();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const Header = () => {
     if (storedToken) {
       setToken(storedToken);
     }
-  }, []);
+  }, [setToken]);
 
   return (
     <div className="h-[60px] flex items-center justify-between px-4">

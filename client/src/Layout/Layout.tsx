@@ -1,6 +1,7 @@
+import React, { ReactNode } from "react";
 import { Header } from "../components";
 
-const Root = ({ children }: { children: JSX.Element }) => {
+const Root: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col">
       <Header />

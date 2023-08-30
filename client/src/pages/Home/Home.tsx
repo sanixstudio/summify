@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Root from "../../Layout/Layout";
 
-const Home = () => {
+const Home:React.FC = () => {
   return (
     <Root>
       <div className="bg-gradient-to-r text-white from-indigo-500 pb-10 to-purple-500 min-h-[calc(100vh-60px)] w-full flex flex-col items-center text-xl">

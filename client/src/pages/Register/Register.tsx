@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import Root from "../../Layout/Layout";
 import { RegisterForm } from "../../components";
 
-const Register = () => {
+const Register:React.FC = () => {
   return (
     <>
       <Helmet>
