@@ -10,7 +10,12 @@ const app = express();
 dotenv.config();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Change this to your frontend's URL
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,7 +31,7 @@ app.use("/api/chat", require("./routes/chatRoutes"));
 app.use("/api/summary", require("./routes/summaryRoutes"));
 
 // Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(
     colors.bgGreen.brightBlue("listening at http://localhost:" + PORT)

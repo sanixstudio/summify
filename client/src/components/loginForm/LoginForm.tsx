@@ -2,11 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,13 +23,15 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
-        { email, password }
+        "http://localhost:3001/api/auth/login",
+        { email, password },
+        { withCredentials: true }
       );
 
       if (response.status === 200) {
         toast.success("Logged in successfully!");
-        // setToken(response.data.token);
+        localStorage.setItem("authToken", "true");
+        navigate("/home");
       } else {
         toast.error("Login failed. Invalid.");
       }

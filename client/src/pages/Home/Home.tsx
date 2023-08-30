@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Root from "../../Layout/Layout";
-import { useAuth } from "../../context/AuthContext";
 
 const Home = () => {
-  const { token } = useAuth;
-  console.log(token)
-
   return (
     <Root>
       <div className="bg-gradient-to-r text-white from-indigo-500 pb-10 to-purple-500 min-h-[calc(100vh-60px)] w-full flex flex-col items-center text-xl">
@@ -48,12 +44,7 @@ const Home = () => {
               className="w-[200px] h-[200px] border border-white/30  hover:bg-white/10 transition-all flex flex-col justify-center items-center rounded-lg mb-3"
               to="/summarizer"
             >
-              <img
-                src="/images/summarize-1.jpg"
-                alt="chat bot"
-                width={100}
-                className=""
-              />
+              <img src="/images/summarize-1.jpg" alt="chat bot" width={100} />
             </Link>
             <span>Summarize large Text</span>
           </motion.div>

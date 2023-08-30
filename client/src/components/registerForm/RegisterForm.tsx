@@ -27,7 +27,7 @@ const RegisterForm: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "http://localhost:3001/api/auth/register",
         {
           username,
           email,
@@ -119,7 +119,7 @@ const RegisterForm: React.FC = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-gradient-to-r from-indigo-600 to-purple-500 text-white py-2 px-4 rounded-md hover:scale-105 transition-all"
+          className={`${loading && "bg-gray-400"} w-full bg-gradient-to-r from-indigo-600 to-purple-500 text-white py-2 px-4 rounded-md hover:scale-105 transition-all`}
         >
           {loading ? "Registering..." : "Register"}
         </button>
