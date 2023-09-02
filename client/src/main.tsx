@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./App.tsx";
-import { SpinnerLoader } from "./components/index.tsx";
 import Home from "./pages/Home/Home.tsx";
 import { AiChatBot, Login, Register, Summarizer } from "./pages/index.ts";
 import { AuthProvider } from "./context/AuthContext.js";
@@ -42,7 +41,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <CookiesProvider>
       <AuthProvider>
         <Theme>
-          <RouterProvider router={router} fallbackElement={<SpinnerLoader />} />
+          <RouterProvider router={router} />
         </Theme>
       </AuthProvider>
     </CookiesProvider>
