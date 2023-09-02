@@ -1,7 +1,7 @@
 import React from "react";
 import { Oval } from "react-loader-spinner";
 
-const Loader: React.FC = () => {
+const SpinnerLoader: React.FC = () => {
   return (
     <Oval
       height={80}
@@ -15,4 +15,4 @@ const Loader: React.FC = () => {
   );
 };
 
-export default Loader;
+export default SpinnerLoader;
