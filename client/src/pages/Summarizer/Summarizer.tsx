@@ -3,7 +3,21 @@ import { motion } from "framer-motion";
 import Root from "../../Layout/Layout";
 import { Helmet } from "react-helmet";
 import { formatText } from "../../utils/formattedText";
-import { SpinnerLoader } from "../../components";
+import { Oval } from "react-loader-spinner";
+
+export const SpinnerLoader: React.FC = () => {
+  return (
+    <Oval
+      height={80}
+      width={80}
+      color="#fff"
+      visible={true}
+      ariaLabel="oval-loading"
+      secondaryColor="#fff"
+      strokeWidth={4}
+    />
+  );
+};
 
 const Summarizer:React.FC = () => {
   const [query, setQuery] = useState("");
