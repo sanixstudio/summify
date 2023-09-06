@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@radix-ui/themes";
 
@@ -43,7 +42,7 @@ const RegisterForm: React.FC = () => {
         console.log(response);
         toast.success("Registered successfully!");
         setTimeout(() => {
-          navigate("/login");
+          navigate("/home");
         }, 2000);
       } else {
         toast.error("Registration failed. Please try again.");
@@ -72,12 +71,7 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: "100%" }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-white/30 p-8 rounded-lg shadow-md w-96 text-white"
-    >
+    <div className="bg-white p-8 rounded-lg shadow-md w-96 text-black">
       <h2 className="text-2xl font-semibold mb-4">Register</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username" className="block text-sm font-medium">
@@ -139,7 +133,7 @@ const RegisterForm: React.FC = () => {
         </p>
       </form>
       <Toaster />
-    </motion.div>
+    </div>
   );
 };
 

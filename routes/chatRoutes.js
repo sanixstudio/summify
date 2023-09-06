@@ -41,4 +41,22 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
+// DELETE CHATS
+router.delete("/:id", async (req, res) => {
+  try {
+    const chatId = req.params.id;
+
+    // Find and remove the chat by its ID
+    const removedChat = await Chat.findByIdAndRemove(chatId);
+
+    if (!removedChat) {
+      return res.status(404).json({ error: "Chat not found." });
+    }
+
+    res.status(200).json(removedChat);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to remove chat." });
+  }
+});
+
 module.exports = router;

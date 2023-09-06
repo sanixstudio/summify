@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
     });
 
     res.cookie("token", token, { httpOnly: true });
-    res.json({ message: "Login successful." });
+    res.json({ message: "Login successful.", user });
   } catch (error) {
     res.status(500).json({ message: "Internal server error." });
   }

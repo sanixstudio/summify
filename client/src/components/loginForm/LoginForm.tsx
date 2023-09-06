@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@radix-ui/themes";
@@ -30,7 +29,7 @@ const LoginForm: React.FC = () => {
       );
 
       if (response.status === 200) {
-        console.log(response)
+        console.log(response);
         toast.success("Logged in successfully!");
         localStorage.setItem("authToken", "true");
         console.log(response);
@@ -55,12 +54,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: "100%" }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-white/30 p-8 rounded-lg shadow-md w-96 text-white"
-    >
+    <div className="bg-white p-8 rounded-lg shadow-md w-96 text-black">
       <h2 className="text-2xl font-semibold mb-4">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -97,14 +91,8 @@ const LoginForm: React.FC = () => {
           Login
         </Button>
       </form>
-      <p className="mt-4 text-sm">
-        Don't have an account?{" "}
-        <a href="/register" className="underline font-bold">
-          Register
-        </a>
-      </p>
       <Toaster />
-    </motion.div>
+    </div>
   );
 };
 
