@@ -45,7 +45,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <CookiesProvider>
       <AuthProvider>
         <Theme>
-          <RouterProvider router={router} />//
+          <RouterProvider router={router} />
         </Theme>
       </AuthProvider>
     </CookiesProvider>
