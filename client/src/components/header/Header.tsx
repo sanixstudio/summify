@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Button } from "@radix-ui/themes";
 import { useEffect } from "react";
+import axios from "axios";
 
 const Header: React.FC = () => {
   const { token, setToken } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
@@ -12,6 +14,12 @@ const Header: React.FC = () => {
       setToken(storedToken);
     }
   }, [setToken]);
+
+  const handleLogout = () => {
+    axios.post("https://ai-chat-bot-summarizer.onrender.com/api/auth/logout");
+    localStorage.removeItem("authToken");
+    navigate(0);
+  };
 
   return (
     <div className="h-[60px] flex items-center justify-between px-4">
@@ -33,6 +41,7 @@ const Header: React.FC = () => {
       <div>
         {token ? (
           <Button
+            onClick={() => handleLogout()}
             className="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg px-4 py-2 text-white"
           >
             Logout

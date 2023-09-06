@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@radix-ui/themes";
 
 const RegisterForm: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -9,6 +11,8 @@ const RegisterForm: React.FC = () => {
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +40,11 @@ const RegisterForm: React.FC = () => {
       );
 
       if (response.status === 201) {
+        console.log(response);
         toast.success("Registered successfully!");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
       } else {
         toast.error("Registration failed. Please try again.");
       }
@@ -116,13 +124,13 @@ const RegisterForm: React.FC = () => {
           className="mt-1 block text-black p-2 w-full border rounded-md shadow-sm outline-none focus:ring focus:ring-opacity-50"
         />
         <br />
-        <button
+        <Button
           type="submit"
           disabled={loading}
-          className={`${loading && "bg-gray-400"} w-full bg-gradient-to-r from-indigo-600 to-purple-500 text-white py-2 px-4 rounded-md hover:scale-105 transition-all`}
+          className={`${loading && "bg-gray-400"} w-full `}
         >
           {loading ? "Registering..." : "Register"}
-        </button>
+        </Button>
         <p className="mt-4 text-sm">
           Already have an account?{" "}
           <a href="/login" className="underline font-bold">

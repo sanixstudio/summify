@@ -1,4 +1,4 @@
-# AI-Powered Full-stack MERN Project Documentation
+# AI-Powered Full-stack MERN Project ![Summify Chatbot](./client/public/images/chatbot_64.png)
 
 ## Overview
 

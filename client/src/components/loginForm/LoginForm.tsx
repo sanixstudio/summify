@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@radix-ui/themes";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -29,11 +30,13 @@ const LoginForm: React.FC = () => {
       );
 
       if (response.status === 200) {
+        console.log(response)
         toast.success("Logged in successfully!");
         localStorage.setItem("authToken", "true");
+        console.log(response);
         navigate("/home");
       } else {
-        toast.error("Login failed. Invalid.");
+        toast.error("Login failed. Invalid credentials.");
       }
     } catch (error) {
       if (
@@ -86,13 +89,13 @@ const LoginForm: React.FC = () => {
             className="mt-1 p-2 text-black block w-full border rounded-md shadow-sm outline-none focus:ring focus:ring-opacity-50"
           />
         </div>
-        <button
+        <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-gradient-to-r from-indigo-600 to-purple-500 text-white py-2 px-4 rounded-md hover:scale-105 transition-all"
+          className="w-full rounded-md hover:scale-105 transition-all"
         >
           Login
-        </button>
+        </Button>
       </form>
       <p className="mt-4 text-sm">
         Don't have an account?{" "}
