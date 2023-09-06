@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@radix-ui/themes";
 
-const RegisterForm: React.FC = () => {
+const RegisterForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,10 +39,10 @@ const RegisterForm: React.FC = () => {
       );
 
       if (response.status === 201) {
-        console.log(response);
         toast.success("Registered successfully!");
         setTimeout(() => {
-          navigate("/home");
+          onClose();
+          navigate(0);
         }, 2000);
       } else {
         toast.error("Registration failed. Please try again.");

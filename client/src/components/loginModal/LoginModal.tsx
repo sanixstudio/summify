@@ -36,7 +36,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 
         {/* Modal content */}
         <div className="modal-content py-4 text-left px-6">
-          <LoginForm />
+          <LoginForm onClose={onClose} />
         </div>
       </div>
     </div>

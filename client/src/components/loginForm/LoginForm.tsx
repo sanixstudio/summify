@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@radix-ui/themes";
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,11 +29,12 @@ const LoginForm: React.FC = () => {
       );
 
       if (response.status === 200) {
-        console.log(response);
         toast.success("Logged in successfully!");
         localStorage.setItem("authToken", "true");
-        console.log(response);
-        navigate("/home");
+        setTimeout(() => {
+          onClose();
+          navigate(0);
+        }, 2000);
       } else {
         toast.error("Login failed. Invalid credentials.");
       }
